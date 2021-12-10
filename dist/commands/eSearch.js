@@ -12,19 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const eEntrez_1 = __importDefault(require("./commands/eEntrez"));
-const eFetch_1 = __importDefault(require("./commands/eFetch"));
-const eSearch_1 = __importDefault(require("./commands/eSearch"));
-const eInfo_1 = __importDefault(require("./commands/eInfo"));
-function getQuery() {
-    return __awaiter(this, void 0, void 0, function* () {
-        const results = yield eSearch_1.default.getSearch('pubmed', 'zanzibar');
-        console.log(results);
-    });
-}
-getQuery();
-exports.default = {
-    eEntrez: eEntrez_1.default,
-    eFetch: eFetch_1.default,
-    eInfo: eInfo_1.default,
+const constants_1 = require("../constants");
+const http_1 = __importDefault(require("../http"));
+const eSearch = {
+    getSearch: (dbName, query) => __awaiter(void 0, void 0, void 0, function* () {
+        const datas = yield (0, http_1.default)(constants_1.entryPoints.einfo, `db=${dbName}&usehistory=y&term=${query}`);
+        const dbinfo = datas.einforesult.dbinfo;
+        return JSON.stringify(dbinfo);
+    }),
 };
+exports.default = eSearch;

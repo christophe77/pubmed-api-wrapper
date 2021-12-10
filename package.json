@@ -47,5 +47,9 @@
     "node": "12.x || 14.x || >= 16"
   },
   "peerDependencies": {},
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cross-fetch": "^3.1.4"
+  }
 }

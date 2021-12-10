@@ -12,19 +12,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const eEntrez_1 = __importDefault(require("./commands/eEntrez"));
-const eFetch_1 = __importDefault(require("./commands/eFetch"));
-const eSearch_1 = __importDefault(require("./commands/eSearch"));
-const eInfo_1 = __importDefault(require("./commands/eInfo"));
-function getQuery() {
+const cross_fetch_1 = __importDefault(require("cross-fetch"));
+const constants_1 = require("../constants");
+const retmode = `&retmode=${constants_1.retMode}`;
+function getRequest(entryPoint, args) {
     return __awaiter(this, void 0, void 0, function* () {
-        const results = yield eSearch_1.default.getSearch('pubmed', 'zanzibar');
-        console.log(results);
+        const url = `${constants_1.baseUrl}${entryPoint}${args}${retmode}`;
+        try {
+            const res = yield (0, cross_fetch_1.default)(url);
+            if (res.status >= 400) {
+                throw new Error('Bad response from server');
+            }
+            const datas = yield res.json();
+            return datas;
+        }
+        catch (err) {
+            return err;
+        }
     });
 }
-getQuery();
-exports.default = {
-    eEntrez: eEntrez_1.default,
-    eFetch: eFetch_1.default,
-    eInfo: eInfo_1.default,
-};
+exports.default = getRequest;
