@@ -1,0 +1,51 @@
+{
+  "name": "pubmed-api",
+  "version": "0.0.1",
+  "description": "pubmed api in javascript",
+  "keywords": [
+    "pubmed",
+    "api",
+    "ncbi"
+  ],
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophe77/pubmed-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/christophe77/pubmed-api/issues"
+  },
+  "homepage": "https://github.com/christophe77/pubmed-api#readme",
+  "author": "christophe bellec",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "concurrently -k -n \"Typescript,Node\" -p \"[{name}]\" -c \"blue,green\" \"tsc --watch\" \"nodemon dist/index.js\"",
+    "start": "tsc && node dist/index.js",
+    "build": "tsc",
+    "prepublish": "yarn build",
+    "test": "jest --coverage",
+    "test:badges": "jest --coverage && yarn jest-coverage-badges-ts",
+    "test-watch": "jest --verbose --watchAll",
+    "lint": "eslint . --ext .ts"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.10",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "concurrently": "^6.4.0",
+    "eslint": "^8.3.0",
+    "jest": "^27.3.1",
+    "jest-coverage-badges-ts": "^0.1.4",
+    "memfs": "^3.4.0",
+    "nodemon": "^2.0.15",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.5.2"
+  },
+  "engines": {
+    "node": "12.x || 14.x || >= 16"
+  },
+  "peerDependencies": {},
+  "license": "ISC"
+}
