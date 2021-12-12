@@ -6,7 +6,7 @@ type Translation = {
 };
 export type EsearchOptions = {
   dbName: string;
-  query: string;
+  term: string;
   minDate?: string;
   maxDate?: string;
   retStart?: string;

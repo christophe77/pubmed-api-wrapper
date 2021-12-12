@@ -36,19 +36,18 @@ Not yet published<br/>
 
 All parameters are explained here : https://dataguide.nlm.nih.gov/eutilities/utilities.html#esearch<br/>
 
-    // eSearch
     async function search() {
         const options = {
         // mandatory
             dbName: 'pubmed',
-            query: 'green',
+            term: 'green',
         // optional
             minDate: '2021/01/01',
             maxDate: '2021/02/02',
             retStart: '500',
             retMax: '1000',
             retType: '',
-            dateType: '',
+            dateType: 'edat',
             relDate: '2021/01/01',
         };
         const results = await pubMedApi.eSearch.search(options);

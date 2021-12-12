@@ -6,10 +6,10 @@ import { RetMode } from '../types/PubmedApi';
 const eSearch = (retMode: RetMode, apiKey: string) => {
   return {
     search: async (options: EsearchOptions): Promise<EsearchResult> => {
-      const { dbName, query } = options;
+      const { dbName, term } = options;
       const datas = await getRequest(
         entryPoints.esearch,
-        `db=${dbName}&term=${query}&usehistory=y&retmode=${retMode}${apiKey}${optionalArgsBuilder(
+        `db=${dbName}&term=${term}&usehistory=y&retmode=${retMode}${apiKey}${optionalArgsBuilder(
           options,
         )}`,
       );
