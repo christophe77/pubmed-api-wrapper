@@ -48,5 +48,7 @@
   },
   "peerDependencies": {},
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "simple-xml-to-json": "^1.0.8"
+  }
 }

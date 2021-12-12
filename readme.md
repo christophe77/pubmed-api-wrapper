@@ -75,3 +75,16 @@ Explanations here : https://dataguide.nlm.nih.gov/eutilities/utilities.html#esea
             console.log(error);
         }
     }
+
+### eSpell
+
+Explanations here : https://dataguide.nlm.nih.gov/eutilities/utilities.html#espell<br/>
+
+    async function getSpell() {
+        try {
+            const results = await pubMedApi.eSpell.search('pubmed', 'green');
+            console.log(results);
+        } catch (error) {
+            console.log(error);
+        }
+    }

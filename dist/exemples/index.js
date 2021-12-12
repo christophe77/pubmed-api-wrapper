@@ -57,3 +57,14 @@ async function getSearchWithOptions() {
     console.log(error);
   }
 }
+
+// eSpell
+
+async function getSpell() {
+  try {
+    const results = await pubMedApi.eSpell.search('pubmed', 'green');
+    console.log(results);
+  } catch (error) {
+    console.log(error);
+  }
+}
