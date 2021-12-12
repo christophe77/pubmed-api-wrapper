@@ -68,3 +68,4 @@ async function getSpell() {
     console.log(error);
   }
 }
+getSpell()

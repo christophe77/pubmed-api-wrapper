@@ -14,8 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const constants_1 = require("../constants");
 const http_1 = __importDefault(require("../http"));
-// @ts-ignore
-const simple_xml_to_json_1 = require("simple-xml-to-json");
+const utils_1 = require("../utils/utils");
 /*
   eSpell only works with xml retmode
   TODO : make my own XML to JSON converter script
@@ -23,11 +22,9 @@ const simple_xml_to_json_1 = require("simple-xml-to-json");
 const eSpell = (retMode, apiKey) => {
     return {
         search: (dbName, term) => __awaiter(void 0, void 0, void 0, function* () {
-            const datas = yield (0, http_1.default)(constants_1.entryPoints.espell, `retmode=xml${apiKey}&db=${dbName}&term=${term}`);
-            if (retMode === 'json') {
-                return JSON.stringify((0, simple_xml_to_json_1.convertXML)(datas), null, 4);
-            }
-            return datas;
+            const xmlDatas = yield (0, http_1.default)(constants_1.entryPoints.espell, `retmode=xml${apiKey}&db=${dbName}&term=${term}`);
+            const jsonDatas = (0, utils_1.toJson)(xmlDatas);
+            return retMode === 'json' ? jsonDatas : xmlDatas;
         }),
     };
 };
