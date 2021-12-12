@@ -1,4 +1,4 @@
-import { RetMode } from '../types/PubmedApi';
+import { RetMode } from '../types/pubmedApi';
 declare const eSpell: (retMode: RetMode, apiKey: string) => {
     search: (dbName: string, term: string) => Promise<string>;
 };

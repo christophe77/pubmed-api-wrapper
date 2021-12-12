@@ -1,4 +1,4 @@
-import { EsearchOptions } from './Esearch';
+import { EsearchOptions, EsummaryOptions } from './searchOptions';
 
 export interface IPubmedApi {
   retMode: RetMode;
@@ -12,6 +12,13 @@ export interface IPubmedApi {
       dbName: string,
       term: string,
       options: EsearchOptions,
+    ) => Promise<string>;
+  };
+  eSummary: {
+    search: (
+      dbName: string,
+      id: string,
+      options: EsummaryOptions,
     ) => Promise<string>;
   };
   eSpell: {

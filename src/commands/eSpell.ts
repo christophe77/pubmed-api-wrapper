@@ -1,6 +1,6 @@
 import { entryPoints } from '../constants';
 import getRequest from '../http';
-import { RetMode } from '../types/PubmedApi';
+import { RetMode } from '../types/pubmedApi';
 import { toJson } from '../utils/utils';
 /* 
   eSpell only works with xml retmode

@@ -1,6 +1,6 @@
 import { entryPoints } from '../constants';
 import getRequest from '../http';
-import { RetMode } from '../types/PubmedApi';
+import { RetMode } from '../types/pubmedApi';
 
 const eInfo = (retMode: RetMode, apiKey: string) => {
   return {

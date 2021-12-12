@@ -1,7 +1,7 @@
 import { entryPoints } from '../constants';
 import getRequest from '../http';
-import { EsearchOptions } from '../types/Esearch';
-import { RetMode } from '../types/PubmedApi';
+import { EsearchOptions } from '../types/searchOptions';
+import { RetMode } from '../types/pubmedApi';
 
 const eSearch = (retMode: RetMode, apiKey: string) => {
   return {

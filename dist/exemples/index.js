@@ -31,7 +31,7 @@ async function getDbInfo() {
 
 // eSearch
 
-async function getSearch() {
+async function eSearchSearch() {
   try {
     const results = await pubMedApi.eSearch.search('pubmed', 'green');
     console.log(results);
@@ -40,7 +40,7 @@ async function getSearch() {
   }
 }
 
-async function getSearchWithOptions() {
+async function eSearchSearchWithOptions() {
   const options = {
     minDate: '2021/01/01',
     maxDate: '2021/02/02',
@@ -60,7 +60,7 @@ async function getSearchWithOptions() {
 
 // eSpell
 
-async function getSpell() {
+async function eSpellSearch() {
   try {
     const results = await pubMedApi.eSpell.search('pubmed', 'green');
     console.log(results);
@@ -68,4 +68,31 @@ async function getSpell() {
     console.log(error);
   }
 }
-getSpell()
+
+// eSummary
+
+async function eSummarySearch() {
+  try {
+    const results = await pubMedApi.eSummary.search(
+      'pubmed',
+      '11200,11201,11202',
+    );
+    console.log(results);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function eSummarySearchWithOptions() {
+  const options = {
+    retStart: '100',
+    retMax: '100',
+    version: '2',
+  };
+  try {
+    const results = await pubMedApi.eSearch.search('pubmed', 'green', options);
+    console.log(results);
+  } catch (error) {
+    console.log(error);
+  }
+}

@@ -88,3 +88,33 @@ Explanations here : https://dataguide.nlm.nih.gov/eutilities/utilities.html#espe
             console.log(error);
         }
     }
+
+### eSummary
+
+Explanations here : https://dataguide.nlm.nih.gov/eutilities/utilities.html#esummary<br/>
+
+    async function eSummarySearch() {
+        try {
+            const results = await pubMedApi.eSummary.search(
+                'pubmed',
+                '11200,11201,11202',
+            );
+            console.log(results);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function eSummarySearchWithOptions() {
+        const options = {
+            retStart: '100',
+            retMax: '100',
+            version: '2',
+        };
+        try {
+            const results = await pubMedApi.eSearch.search('pubmed', 'green', options);
+            console.log(results);
+        } catch (error) {
+            console.log(error);
+        }
+    }

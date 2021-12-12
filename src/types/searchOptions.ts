@@ -7,3 +7,9 @@ export type EsearchOptions = {
   dateType?: string;
   relDate?: string;
 } | undefined;
+
+export type EsummaryOptions = {
+  retStart ?: string;
+  retMax ?: string;
+  version ?: string;
+} | undefined;
