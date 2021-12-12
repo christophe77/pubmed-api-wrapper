@@ -1,23 +1,40 @@
-# PubMed API
+# PubMed API wrapper
 
-<img src="./coverage/badge-functions.svg">
-
-PubMed API for nodeJS.<br/>
+PubMed API wrapper JS.<br/>
 
 Feel free to contribute.<br/>
 
 ## Install
 
-Install using your package manager :<br/>
-
-    npm i --save pubmed-api
-    or
-    yarn add pubmed-api
-
-Import the package in your js / ts file :<br/>
-
-    const  pubmed = require("pubmed-api");
-    or
-    import pubmed from "pubmed-api";
+Not yet published
 
 ## Available commands
+
+    import PubmedApi from '../dist';
+    // By default PubmedApi is set to
+    // retMode : json
+    // apiKey : undefined
+    const pubMedApi = new PubmedApi();
+    // const pubMedApi = new PubmedApi("xml");
+    // const pubMedApi = new PubmedApi("xml", "myApiKey");
+
+    // eInfo
+    async function getDbList() {
+    const results = await pubMedApi.eInfo.getDbList();
+    }
+    async function getDbInfo() {
+    const results = await pubMedApi.eInfo.getDbInfo('pubmed');
+    }
+
+    // eSearch
+    async function search() {
+    const options = {
+        // mandatory
+        dbName: 'pubmed',
+        query: 'green',
+        // optional
+        minDate: '2021/01/01',
+        maxDate: '2021/02/02',
+    };
+    const results = await pubMedApi.eSearch.search(options);
+    }
