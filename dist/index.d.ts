@@ -7,10 +7,10 @@ export declare class PubmedApi implements IPubmedApi {
         getDbInfo: (dbName: string) => Promise<string>;
     };
     eSearch: {
-        search: (options: import("./types/Esearch").EsearchOptions) => Promise<unknown>;
+        search: (dbName: string, term: string, options: import("./types/Esearch").EsearchOptions) => Promise<string>;
     };
     eSpell: {
-        search: (dbName: string, term: string) => Promise<unknown>;
+        search: (dbName: string, term: string) => Promise<string>;
     };
     constructor(retMode?: RetMode, apiKey?: ApiKey);
 }

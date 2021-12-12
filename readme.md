@@ -28,29 +28,50 @@ Not yet published<br/>
 Explanations here : https://dataguide.nlm.nih.gov/eutilities/utilities.html#einfo<br/>
 
     async function getDbList() {
-        const results = await pubMedApi.eInfo.getDbList();
+        try {
+            const results = await pubMedApi.eInfo.getDbList();
+            console.log(results);
+        } catch (error) {
+            console.log(error);
+        }
     }
+
     async function getDbInfo() {
-        const results = await pubMedApi.eInfo.getDbInfo('pubmed');
+        try {
+            const results = await pubMedApi.eInfo.getDbInfo('pubmed');
+            console.log(results);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 ### eSearch
 
 Explanations here : https://dataguide.nlm.nih.gov/eutilities/utilities.html#esearch<br/>
 
-    async function search() {
+    async function getSearch() {
+        try {
+            const results = await pubMedApi.eSearch.search('pubmed', 'green');
+            console.log(results);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function getSearchWithOptions() {
         const options = {
-        // mandatory
-            dbName: 'pubmed',
-            term: 'green',
-        // optional
             minDate: '2021/01/01',
             maxDate: '2021/02/02',
             retStart: '500',
             retMax: '1000',
             retType: '',
             dateType: 'edat',
-            relDate: '2021/01/01',
+            relDate: '',
         };
-        const results = await pubMedApi.eSearch.search(options);
+        try {
+            const results = await pubMedApi.eSearch.search('pubmed', 'green', options);
+            console.log(results);
+        } catch (error) {
+            console.log(error);
+        }
     }

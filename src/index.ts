@@ -19,17 +19,3 @@ export class PubmedApi implements IPubmedApi {
     this.eSpell = eSpell(this.retMode, this.apiKey);
   }
 }
-
-const aaa = new PubmedApi('xml');
-
-async function search() {
-  try {
-    const results = await aaa.eInfo.getDbList();
-    console.log(results)
-    
-  } catch (error) {
-    console.log(error)
-  }
-
-}
-search()

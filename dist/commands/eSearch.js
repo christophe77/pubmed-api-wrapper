@@ -16,23 +16,24 @@ const constants_1 = require("../constants");
 const http_1 = __importDefault(require("../http"));
 const eSearch = (retMode, apiKey) => {
     return {
-        search: (options) => __awaiter(void 0, void 0, void 0, function* () {
-            const { dbName, term } = options;
+        search: (dbName, term, options) => __awaiter(void 0, void 0, void 0, function* () {
             const datas = yield (0, http_1.default)(constants_1.entryPoints.esearch, `db=${dbName}&term=${term}&usehistory=y&retmode=${retMode}${apiKey}${optionalArgsBuilder(options)}`);
-            // const { esearchresult } = datas;
             return datas;
         }),
     };
 };
 const optionalArgsBuilder = (options) => {
-    const { minDate, maxDate, retStart, retMax, retType, dateType, relDate } = options;
-    const qMinDate = minDate ? `&mindate=${minDate}` : '';
-    const qMaxDate = maxDate ? `&maxdate=${maxDate}` : '';
-    const qRetstart = retStart ? `&retstart=${retStart}` : '';
-    const qRetmax = retMax ? `&retmax=${retMax}` : '';
-    const qRetType = retType ? `&rettype=${retType}` : '';
-    const qDateType = dateType ? `&datetype=${dateType}` : '';
-    const qRelDate = relDate ? `&reldate=${relDate}` : '';
-    return `${qMinDate}${qMaxDate}${qRetstart}${qRetmax}${qRetType}${qDateType}${qRelDate}`;
+    if (options) {
+        const { minDate, maxDate, retStart, retMax, retType, dateType, relDate } = options;
+        const qMinDate = minDate ? `&mindate=${minDate}` : '';
+        const qMaxDate = maxDate ? `&maxdate=${maxDate}` : '';
+        const qRetstart = retStart ? `&retstart=${retStart}` : '';
+        const qRetmax = retMax ? `&retmax=${retMax}` : '';
+        const qRetType = retType ? `&rettype=${retType}` : '';
+        const qDateType = dateType ? `&datetype=${dateType}` : '';
+        const qRelDate = relDate ? `&reldate=${relDate}` : '';
+        return `${qMinDate}${qMaxDate}${qRetstart}${qRetmax}${qRetType}${qDateType}${qRelDate}`;
+    }
+    return '';
 };
 exports.default = eSearch;

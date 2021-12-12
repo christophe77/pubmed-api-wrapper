@@ -18,7 +18,6 @@ const eSpell = (retMode, apiKey) => {
     return {
         search: (dbName, term) => __awaiter(void 0, void 0, void 0, function* () {
             const datas = yield (0, http_1.default)(constants_1.entryPoints.espell, `retmode=${retMode}${apiKey}&db=${dbName}&term=${term}`);
-            // const { espellresult } = datas;
             return datas;
         }),
     };

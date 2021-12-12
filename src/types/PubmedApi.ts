@@ -8,7 +8,11 @@ export interface IPubmedApi {
     getDbInfo: (dbName: string) => Promise<string>;
   };
   eSearch: {
-    search: (options: EsearchOptions) => Promise<string>;
+    search: (
+      dbName: string,
+      term: string,
+      options: EsearchOptions,
+    ) => Promise<string>;
   };
   eSpell: {
     search: (dbName: string, term: string) => Promise<string>;

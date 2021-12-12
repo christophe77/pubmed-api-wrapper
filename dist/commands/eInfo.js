@@ -18,12 +18,10 @@ const eInfo = (retMode, apiKey) => {
     return {
         getDbList: () => __awaiter(void 0, void 0, void 0, function* () {
             const datas = yield (0, http_1.default)(constants_1.entryPoints.einfo, `retmode=${retMode}${apiKey}`);
-            // const { einforesult } = datas;
             return datas;
         }),
         getDbInfo: (dbName) => __awaiter(void 0, void 0, void 0, function* () {
             const datas = yield (0, http_1.default)(constants_1.entryPoints.einfo, `db=${dbName}&retmode=${retMode}${apiKey}`);
-            // const { einforesult } = datas;
             return datas;
         }),
     };
