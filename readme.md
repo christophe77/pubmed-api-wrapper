@@ -25,6 +25,8 @@ Not yet published<br/>
 
 ### eInfo
 
+Explanations here : https://dataguide.nlm.nih.gov/eutilities/utilities.html#einfo<br/>
+
     async function getDbList() {
         const results = await pubMedApi.eInfo.getDbList();
     }
@@ -34,7 +36,7 @@ Not yet published<br/>
 
 ### eSearch
 
-All parameters are explained here : https://dataguide.nlm.nih.gov/eutilities/utilities.html#esearch<br/>
+Explanations here : https://dataguide.nlm.nih.gov/eutilities/utilities.html#esearch<br/>
 
     async function search() {
         const options = {
