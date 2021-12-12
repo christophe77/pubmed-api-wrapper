@@ -1,11 +1,15 @@
 import PubmedApi from '../dist';
 
-// By default PubmedApi is set to
-// retMode : json
-// apiKey : undefined
+/* 
+  By default PubmedApi is set to
+    retMode : json
+    apiKey : undefined
+  You can override this settings in the constructor :
+    const pubMedApi = new PubmedApi("xml");
+    const pubMedApi = new PubmedApi("xml", "myApiKey"); 
+*/
+
 const pubMedApi = new PubmedApi();
-// const pubMedApi = new PubmedApi("xml");
-// const pubMedApi = new PubmedApi("xml", "myApiKey");
 
 // eInfo
 async function getDbList() {
