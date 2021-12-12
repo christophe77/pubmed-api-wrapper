@@ -1,4 +1,5 @@
-export const baseUrl = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
+export const baseUrl = '/entrez/eutils/';
+export const hostname = 'eutils.ncbi.nlm.nih.gov';
 export const entryPoints = {
   einfo: `einfo.fcgi?`,
   esearch: `esearch.fcgi?`,

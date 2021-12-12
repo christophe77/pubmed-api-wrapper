@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.eEntrezDb = exports.entryPoints = exports.baseUrl = void 0;
-exports.baseUrl = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
+exports.eEntrezDb = exports.entryPoints = exports.hostname = exports.baseUrl = void 0;
+exports.baseUrl = '/entrez/eutils/';
+exports.hostname = 'eutils.ncbi.nlm.nih.gov';
 exports.entryPoints = {
     einfo: `einfo.fcgi?`,
     esearch: `esearch.fcgi?`,

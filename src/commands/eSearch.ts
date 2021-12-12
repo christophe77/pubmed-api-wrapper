@@ -1,11 +1,11 @@
 import { entryPoints } from '../constants';
 import getRequest from '../http';
-import { EsearchResult, EsearchOptions } from '../types/Esearch';
+import { EsearchOptions } from '../types/Esearch';
 import { RetMode } from '../types/PubmedApi';
 
 const eSearch = (retMode: RetMode, apiKey: string) => {
   return {
-    search: async (options: EsearchOptions): Promise<EsearchResult> => {
+    search: async (options: EsearchOptions): Promise<string> => {
       const { dbName, term } = options;
       const datas = await getRequest(
         entryPoints.esearch,
@@ -13,8 +13,7 @@ const eSearch = (retMode: RetMode, apiKey: string) => {
           options,
         )}`,
       );
-      const { esearchresult } = datas;
-      return esearchresult;
+      return datas;
     },
   };
 };

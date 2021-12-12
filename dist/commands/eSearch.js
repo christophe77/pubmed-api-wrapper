@@ -19,8 +19,8 @@ const eSearch = (retMode, apiKey) => {
         search: (options) => __awaiter(void 0, void 0, void 0, function* () {
             const { dbName, term } = options;
             const datas = yield (0, http_1.default)(constants_1.entryPoints.esearch, `db=${dbName}&term=${term}&usehistory=y&retmode=${retMode}${apiKey}${optionalArgsBuilder(options)}`);
-            const { esearchresult } = datas;
-            return esearchresult;
+            // const { esearchresult } = datas;
+            return datas;
         }),
     };
 };

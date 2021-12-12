@@ -1,15 +1,17 @@
-import { EinfoResult } from './EInfo';
-import { EsearchOptions, EsearchResult } from './Esearch';
+import { EsearchOptions } from './Esearch';
 
 export interface IPubmedApi {
   retMode: RetMode;
   apiKey: ApiKey;
   eInfo: {
-    getDbList: () => Promise<EinfoResult>;
-    getDbInfo: (dbName: string) => Promise<EinfoResult>;
+    getDbList: () => Promise<string>;
+    getDbInfo: (dbName: string) => Promise<string>;
   };
   eSearch: {
-    search: (options: EsearchOptions) => Promise<EsearchResult>;
+    search: (options: EsearchOptions) => Promise<string>;
+  };
+  eSpell: {
+    search: (dbName: string, term: string) => Promise<string>;
   };
 }
 export type RetMode = 'json' | 'xml';

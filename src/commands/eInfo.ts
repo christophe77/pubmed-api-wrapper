@@ -1,25 +1,22 @@
 import { entryPoints } from '../constants';
 import getRequest from '../http';
-import { EinfoResult } from '../types/EInfo';
 import { RetMode } from '../types/PubmedApi';
 
 const eInfo = (retMode: RetMode, apiKey: string) => {
   return {
-    getDbList: async (): Promise<EinfoResult> => {
+    getDbList: async (): Promise<string> => {
       const datas = await getRequest(
         entryPoints.einfo,
         `retmode=${retMode}${apiKey}`,
       );
-      const { einforesult } = datas;
-      return einforesult;
+      return datas;
     },
-    getDbInfo: async (dbName: string): Promise<EinfoResult> => {
+    getDbInfo: async (dbName: string): Promise<string> => {
       const datas = await getRequest(
         entryPoints.einfo,
         `db=${dbName}&retmode=${retMode}${apiKey}`,
       );
-      const { einforesult } = datas;
-      return einforesult;
+      return datas;
     },
   };
 };

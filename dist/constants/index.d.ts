@@ -1,4 +1,5 @@
-export declare const baseUrl = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/";
+export declare const baseUrl = "/entrez/eutils/";
+export declare const hostname = "eutils.ncbi.nlm.nih.gov";
 export declare const entryPoints: {
     einfo: string;
     esearch: string;
