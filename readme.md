@@ -6,22 +6,32 @@ Feel free to contribute.<br/>
 
 ## Install
 
-Not yet published<br/>
+    yarn add pubmed-api
 
-## Available commands
+or <br />
 
-    import PubmedApi from '../dist';
+    npm install --save pubmed-api
 
-    /*
-        By default PubmedApi is set to
-            retMode : json
-            apiKey : undefined
-        You can override this settings in the constructor :
-            const pubMedApi = new PubmedApi("xml");
-            const pubMedApi = new PubmedApi("xml", "myApiKey");
-    */
+then import the package in your app : <br />
+
+    import PubmedApi from 'pubmed-api';
+
+or <br />
+
+    const PubmedApi = require('pubmed-api');
+
+By default PubmedApi is set to :<br />
+retMode = json<br />
+apiKey = undefined<br />
 
     const pubMedApi = new PubmedApi();
+
+You can override this settings in the constructor :<br />
+
+    const pubMedApi = new PubmedApi("xml");
+    const pubMedApi = new PubmedApi("xml", "myApiKey");
+
+## Available commands
 
 ### eInfo
 
