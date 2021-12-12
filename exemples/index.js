@@ -28,6 +28,11 @@ async function search() {
     // optional
     minDate: '2021/01/01',
     maxDate: '2021/02/02',
+    retStart: '',
+    retMax: '1000',
+    retType: '',
+    dateType: '',
+    relDate: '',
   };
   const results = await pubMedApi.eSearch.search(options);
 }

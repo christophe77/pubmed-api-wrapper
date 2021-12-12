@@ -19,10 +19,16 @@ const eSearch = (retMode: RetMode, apiKey: string) => {
   };
 };
 const optionalArgsBuilder = (options: EsearchOptions): string => {
-  const { minDate, maxDate } = options;
+  const { minDate, maxDate, retStart, retMax, retType, dateType, relDate } =
+    options;
   const qMinDate = minDate ? `&mindate=${minDate}` : '';
   const qMaxDate = maxDate ? `&maxdate=${maxDate}` : '';
-  return `${qMinDate}${qMaxDate}`;
+  const qRetstart = retStart ? `&retstart=${retStart}` : '';
+  const qRetmax = retMax ? `&retmax=${retMax}` : '';
+  const qRetType = retType ? `&rettype=${retType}` : '';
+  const qDateType = dateType ? `&datetype=${dateType}` : '';
+  const qRelDate = relDate ? `&reldate=${relDate}` : '';
+  return `${qMinDate}${qMaxDate}${qRetstart}${qRetmax}${qRetType}${qDateType}${qRelDate}`;
 };
 
 export default eSearch;

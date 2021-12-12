@@ -23,13 +23,18 @@ Not yet published<br/>
 
     const pubMedApi = new PubmedApi();
 
-    // eInfo
+### eInfo
+
     async function getDbList() {
         const results = await pubMedApi.eInfo.getDbList();
     }
     async function getDbInfo() {
         const results = await pubMedApi.eInfo.getDbInfo('pubmed');
     }
+
+### eSearch
+
+All parameters are explained here : https://dataguide.nlm.nih.gov/eutilities/utilities.html#esearch<br/>
 
     // eSearch
     async function search() {
@@ -40,6 +45,11 @@ Not yet published<br/>
         // optional
             minDate: '2021/01/01',
             maxDate: '2021/02/02',
+            retStart: '500',
+            retMax: '1000',
+            retType: '',
+            dateType: '',
+            relDate: '2021/01/01',
         };
         const results = await pubMedApi.eSearch.search(options);
     }

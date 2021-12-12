@@ -9,6 +9,11 @@ export type EsearchOptions = {
   query: string;
   minDate?: string;
   maxDate?: string;
+  retStart?: string;
+  retMax?: string;
+  retType?: string;
+  dateType?: string;
+  relDate?: string;
 };
 export type EsearchResult = {
   count: string;
