@@ -1,14 +1,27 @@
 import { entryPoints } from '../constants';
 import getRequest from '../http';
-import { EntrezDb } from '../types/Entrez';
-import { DbInfos } from '../types/EInfos';
+import { EinfoResult } from '../types/EInfo';
+import { RetMode } from '../types/PubmedApi';
 
-const eInfo = {
-  getDb: async (dbName: EntrezDb): Promise<string> => {
-    const datas = await getRequest(entryPoints.einfo, `db=${dbName}`);
-    const dbinfo : DbInfos = datas.einforesult.dbinfo;
-    return JSON.stringify(dbinfo);
-  },
+const eInfo = (retMode: RetMode, apiKey: string) => {
+  return {
+    getDbList: async (): Promise<EinfoResult> => {
+      const datas = await getRequest(
+        entryPoints.einfo,
+        `retmode=${retMode}${apiKey}`,
+      );
+      const { einforesult } = datas;
+      return einforesult;
+    },
+    getDbInfo: async (dbName: string): Promise<EinfoResult> => {
+      const datas = await getRequest(
+        entryPoints.einfo,
+        `db=${dbName}&retmode=${retMode}${apiKey}`,
+      );
+      const { einforesult } = datas;
+      return einforesult;
+    },
+  };
 };
 
 export default eInfo;

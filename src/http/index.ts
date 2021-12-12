@@ -1,10 +1,8 @@
 import fetch from 'cross-fetch';
-import { baseUrl, retMode } from '../constants';
-
-const retmode = `&retmode=${retMode}`;
+import { baseUrl } from '../constants';
 
 async function getRequest(entryPoint: string, args: string | undefined) {
-  const url = `${baseUrl}${entryPoint}${args}${retmode}`;
+  const url = `${baseUrl}${entryPoint}${args}`;
   try {
     const res = await fetch(url);
     if (res.status >= 400) {

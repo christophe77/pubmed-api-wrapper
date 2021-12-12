@@ -12,19 +12,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const eEntrez_1 = __importDefault(require("./commands/eEntrez"));
+exports.PubmedApi = void 0;
 const eFetch_1 = __importDefault(require("./commands/eFetch"));
 const eSearch_1 = __importDefault(require("./commands/eSearch"));
 const eInfo_1 = __importDefault(require("./commands/eInfo"));
-function getQuery() {
+class PubmedApi {
+    constructor(retMode, apiKey) {
+        this.retMode = retMode ? retMode : 'json';
+        this.apiKey = apiKey && apiKey !== '' ? `&api_key=${apiKey}` : '';
+        this.eFetch = (0, eFetch_1.default)(this.retMode, this.apiKey);
+        this.eInfo = (0, eInfo_1.default)(this.retMode, this.apiKey);
+        this.eSearch = (0, eSearch_1.default)(this.retMode, this.apiKey);
+    }
+}
+exports.PubmedApi = PubmedApi;
+const pubMedApi = new PubmedApi("json");
+function getDbInfo() {
     return __awaiter(this, void 0, void 0, function* () {
-        const results = yield eSearch_1.default.getSearch('pubmed', 'zanzibar');
+        const results = yield pubMedApi.eInfo.getDbInfo("pubmed");
         console.log(results);
     });
 }
-getQuery();
-exports.default = {
-    eEntrez: eEntrez_1.default,
-    eFetch: eFetch_1.default,
-    eInfo: eInfo_1.default,
-};
+getDbInfo();

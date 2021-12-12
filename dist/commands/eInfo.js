@@ -14,11 +14,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const constants_1 = require("../constants");
 const http_1 = __importDefault(require("../http"));
-const eInfo = {
-    getDb: (dbName) => __awaiter(void 0, void 0, void 0, function* () {
-        const datas = yield (0, http_1.default)(constants_1.entryPoints.einfo, `db=${dbName}`);
-        const dbinfo = datas.einforesult.dbinfo;
-        return JSON.stringify(dbinfo);
-    }),
+const eInfo = (retMode, apiKey) => {
+    return {
+        getDbList: () => __awaiter(void 0, void 0, void 0, function* () {
+            const datas = yield (0, http_1.default)(constants_1.entryPoints.einfo, `retmode=${retMode}${apiKey}`);
+            const { einforesult } = datas;
+            return einforesult;
+        }),
+        getDbInfo: (dbName) => __awaiter(void 0, void 0, void 0, function* () {
+            const datas = yield (0, http_1.default)(constants_1.entryPoints.einfo, `db=${dbName}&retmode=${retMode}${apiKey}`);
+            const { einforesult } = datas;
+            return einforesult;
+        }),
+    };
 };
 exports.default = eInfo;

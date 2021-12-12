@@ -1,13 +1,13 @@
 {
   "name": "pubmed-api",
   "version": "0.0.1",
-  "description": "pubmed api in javascript",
+  "description": "pubmed api wrapper in javascript",
   "keywords": [
     "pubmed",
     "api",
-    "ncbi"
+    "ncbi",
+    "eutils"
   ],
-  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/christophe77/pubmed-api.git"
@@ -49,7 +49,6 @@
   "peerDependencies": {},
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.24.0",
     "cross-fetch": "^3.1.4"
   }
 }

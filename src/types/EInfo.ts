@@ -15,7 +15,7 @@ type Field = {
   hierarchy: string;
   ishidden: string;
 };
-export type DbInfos = {
+type DbInfo = {
   dbname: string;
   menuname: string;
   description: string;
@@ -24,4 +24,9 @@ export type DbInfos = {
   lastupdate: string;
   fieldlist: Field[];
   linklist: Link[];
+};
+
+export type EinfoResult = {
+  dbinfo: DbInfo;
+  dblist: string[];
 };

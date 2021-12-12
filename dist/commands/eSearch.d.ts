@@ -1,5 +1,6 @@
-import { EntrezDb } from '../types/Entrez';
-declare const eSearch: {
-    getSearch: (dbName: EntrezDb, query: string) => Promise<string>;
+import { EsearchResult, EsearchOptions } from '../types/Esearch';
+import { RetMode } from '../types/PubmedApi';
+declare const eSearch: (retMode: RetMode, apiKey: string) => {
+    search: (options: EsearchOptions) => Promise<EsearchResult>;
 };
 export default eSearch;

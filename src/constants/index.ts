@@ -1,5 +1,4 @@
 export const baseUrl = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
-export const retMode = "json";
 export const entryPoints = {
   einfo: `einfo.fcgi?`,
   esearch: `esearch.fcgi?`,

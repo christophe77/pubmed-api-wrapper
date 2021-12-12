@@ -14,10 +14,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const cross_fetch_1 = __importDefault(require("cross-fetch"));
 const constants_1 = require("../constants");
-const retmode = `&retmode=${constants_1.retMode}`;
 function getRequest(entryPoint, args) {
     return __awaiter(this, void 0, void 0, function* () {
-        const url = `${constants_1.baseUrl}${entryPoint}${args}${retmode}`;
+        const url = `${constants_1.baseUrl}${entryPoint}${args}`;
         try {
             const res = yield (0, cross_fetch_1.default)(url);
             if (res.status >= 400) {
