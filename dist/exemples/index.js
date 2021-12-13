@@ -8,7 +8,7 @@ const PubmedApi = require('../');
         const pubMedApi = new PubmedApi("xml", "myApiKey");
 */
 
-const pubMedApi = new PubmedApi.PubmedApi();
+const pubMedApi = new PubmedApi();
 
 // eInfo
 async function getDbList() {
