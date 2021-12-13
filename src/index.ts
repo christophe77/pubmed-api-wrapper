@@ -6,8 +6,7 @@ import eCitMatch from './commands/eCitMatch';
 
 import { ApiKey, IPubmedApi, RetMode } from './types/pubmedApi';
 
-
-export class PubmedApi implements IPubmedApi {
+class PubmedApi implements IPubmedApi {
   retMode;
   apiKey;
   eInfo;
@@ -26,3 +25,4 @@ export class PubmedApi implements IPubmedApi {
     this.eCitMatch = eCitMatch(this.retMode, this.apiKey);
   }
 }
+module.exports = PubmedApi;
