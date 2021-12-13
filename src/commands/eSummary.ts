@@ -1,6 +1,6 @@
 import { entryPoints } from '../constants';
 import getRequest from '../http';
-import { EsummaryOptions } from '../types/searchOptions';
+import { ESummaryOptions } from '../types/searchOptions';
 import { RetMode } from '../types/pubmedApi';
 
 const eSummary = (retMode: RetMode, apiKey: string) => {
@@ -8,7 +8,7 @@ const eSummary = (retMode: RetMode, apiKey: string) => {
     search: async (
       dbName: string,
       id: string,
-      options: EsummaryOptions,
+      options: ESummaryOptions,
     ): Promise<string> => {
       const datas = await getRequest(
         entryPoints.esummary,
@@ -20,7 +20,7 @@ const eSummary = (retMode: RetMode, apiKey: string) => {
     },
   };
 };
-const optionalArgsBuilder = (options: EsummaryOptions): string => {
+const optionalArgsBuilder = (options: ESummaryOptions): string => {
   if (options) {
     const { retStart, retMax, version } = options;
     const qRetstart = retStart ? `&retstart=${retStart}` : '';

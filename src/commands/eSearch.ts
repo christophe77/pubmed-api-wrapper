@@ -1,6 +1,6 @@
 import { entryPoints } from '../constants';
 import getRequest from '../http';
-import { EsearchOptions } from '../types/searchOptions';
+import { ESearchOptions } from '../types/searchOptions';
 import { RetMode } from '../types/pubmedApi';
 
 const eSearch = (retMode: RetMode, apiKey: string) => {
@@ -8,11 +8,11 @@ const eSearch = (retMode: RetMode, apiKey: string) => {
     search: async (
       dbName: string,
       term: string,
-      options: EsearchOptions,
+      options: ESearchOptions,
     ): Promise<string> => {
       const datas = await getRequest(
         entryPoints.esearch,
-        `db=${dbName}&term=${term}&usehistory=y&retmode=${retMode}${apiKey}${optionalArgsBuilder(
+        `db=${dbName}&term=${term}&retmode=${retMode}${apiKey}${optionalArgsBuilder(
           options,
         )}`,
       );
@@ -20,9 +20,9 @@ const eSearch = (retMode: RetMode, apiKey: string) => {
     },
   };
 };
-const optionalArgsBuilder = (options: EsearchOptions): string => {
+const optionalArgsBuilder = (options: ESearchOptions): string => {
   if (options) {
-    const { minDate, maxDate, retStart, retMax, retType, dateType, relDate } =
+    const { minDate, maxDate, retStart, retMax, retType, dateType, relDate, useHistory } =
       options;
     const qMinDate = minDate ? `&mindate=${minDate}` : '';
     const qMaxDate = maxDate ? `&maxdate=${maxDate}` : '';
@@ -31,7 +31,8 @@ const optionalArgsBuilder = (options: EsearchOptions): string => {
     const qRetType = retType ? `&rettype=${retType}` : '';
     const qDateType = dateType ? `&datetype=${dateType}` : '';
     const qRelDate = relDate ? `&reldate=${relDate}` : '';
-    return `${qMinDate}${qMaxDate}${qRetstart}${qRetmax}${qRetType}${qDateType}${qRelDate}`;
+    const qUseHistory = useHistory ? `&usehistory=y` : '';
+    return `${qMinDate}${qMaxDate}${qRetstart}${qRetmax}${qRetType}${qDateType}${qRelDate}${qUseHistory}`;
   }
   return '';
 };

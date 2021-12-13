@@ -77,6 +77,7 @@ Explanations here : https://dataguide.nlm.nih.gov/eutilities/utilities.html#esea
             retType: '',
             dateType: 'edat',
             relDate: '',
+            useHistory: true,
         };
         try {
             const results = await pubMedApi.eSearch.search('pubmed', 'green', options);
