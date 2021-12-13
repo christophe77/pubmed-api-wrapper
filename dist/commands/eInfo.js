@@ -20,8 +20,8 @@ const eInfo = (retMode, apiKey) => {
             const datas = yield (0, http_1.default)(constants_1.entryPoints.einfo, `retmode=${retMode}${apiKey}`);
             return datas;
         }),
-        getDbInfo: (dbName) => __awaiter(void 0, void 0, void 0, function* () {
-            const datas = yield (0, http_1.default)(constants_1.entryPoints.einfo, `db=${dbName}&retmode=${retMode}${apiKey}`);
+        getDbInfo: (db) => __awaiter(void 0, void 0, void 0, function* () {
+            const datas = yield (0, http_1.default)(constants_1.entryPoints.einfo, `db=${db}&retmode=${retMode}${apiKey}`);
             return datas;
         }),
     };

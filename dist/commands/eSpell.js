@@ -21,8 +21,8 @@ const utils_1 = require("../utils/utils");
 */
 const eSpell = (retMode, apiKey) => {
     return {
-        search: (dbName, term) => __awaiter(void 0, void 0, void 0, function* () {
-            const xmlDatas = yield (0, http_1.default)(constants_1.entryPoints.espell, `retmode=xml${apiKey}&db=${dbName}&term=${term}`);
+        search: (db, term) => __awaiter(void 0, void 0, void 0, function* () {
+            const xmlDatas = yield (0, http_1.default)(constants_1.entryPoints.espell, `retmode=xml${apiKey}&db=${db}&term=${term}`);
             const jsonDatas = (0, utils_1.toJson)(xmlDatas);
             return retMode === 'json' ? jsonDatas : xmlDatas;
         }),

@@ -1,4 +1,4 @@
-export declare type EsearchOptions = {
+export declare type ESearchOptions = {
     minDate?: string;
     maxDate?: string;
     retStart?: string;
@@ -6,8 +6,9 @@ export declare type EsearchOptions = {
     retType?: string;
     dateType?: string;
     relDate?: string;
+    useHistory?: boolean;
 } | undefined;
-export declare type EsummaryOptions = {
+export declare type ESummaryOptions = {
     retStart?: string;
     retMax?: string;
     version?: string;

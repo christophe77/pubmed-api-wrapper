@@ -16,7 +16,7 @@ declare type Field = {
     ishidden: string;
 };
 declare type DbInfo = {
-    dbname: string;
+    db: string;
     menuname: string;
     description: string;
     dbbuild: string;

@@ -8,10 +8,10 @@ import { toJson } from '../utils/utils';
 */
 const eSpell = (retMode: RetMode, apiKey: string) => {
   return {
-    search: async (dbName: string, term: string): Promise<string> => {
+    search: async (db: string, term: string): Promise<string> => {
       const xmlDatas = await getRequest(
         entryPoints.espell,
-        `retmode=xml${apiKey}&db=${dbName}&term=${term}`,
+        `retmode=xml${apiKey}&db=${db}&term=${term}`,
       );
       const jsonDatas = toJson(xmlDatas)
       return retMode === 'json' ? jsonDatas : xmlDatas;

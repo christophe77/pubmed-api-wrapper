@@ -8,6 +8,7 @@ const eSearch_1 = __importDefault(require("./commands/eSearch"));
 const eInfo_1 = __importDefault(require("./commands/eInfo"));
 const eSpell_1 = __importDefault(require("./commands/eSpell"));
 const eSummary_1 = __importDefault(require("./commands/eSummary"));
+const eCitMatch_1 = __importDefault(require("./commands/eCitMatch"));
 class PubmedApi {
     constructor(retMode, apiKey) {
         this.retMode = retMode ? retMode : 'json';
@@ -16,6 +17,7 @@ class PubmedApi {
         this.eSearch = (0, eSearch_1.default)(this.retMode, this.apiKey);
         this.eSummary = (0, eSummary_1.default)(this.retMode, this.apiKey);
         this.eSpell = (0, eSpell_1.default)(this.retMode, this.apiKey);
+        this.eCitMatch = (0, eCitMatch_1.default)(this.retMode, this.apiKey);
     }
 }
 exports.PubmedApi = PubmedApi;

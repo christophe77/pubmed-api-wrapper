@@ -14,22 +14,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const constants_1 = require("../constants");
 const http_1 = __importDefault(require("../http"));
-const eSummary = (retMode, apiKey) => {
+/*
+  eCitMatch only works with xml retmode
+*/
+const eCitMatch = (retMode, apiKey) => {
+    // bdata = journal_title|year|volume|first_page|author_name|your_key|
     return {
-        search: (db, id, options) => __awaiter(void 0, void 0, void 0, function* () {
-            const datas = yield (0, http_1.default)(constants_1.entryPoints.esummary, `db=${db}&id=${id}&retmode=${retMode}${apiKey}${optionalArgsBuilder(options)}`);
-            return datas;
+        match: (db, bData, email) => __awaiter(void 0, void 0, void 0, function* () {
+            const datas = yield (0, http_1.default)(constants_1.entryPoints.ecitmatch, `db=${db}&retmode=xml${apiKey}&bdata=${bData}${email && `&email=${email}`}`);
+            const jsonDatas = JSON.stringify({
+                eCitMatch: datas.replace(/\n/g, ''),
+            });
+            return retMode === 'json' ? jsonDatas : datas;
         }),
     };
 };
-const optionalArgsBuilder = (options) => {
-    if (options) {
-        const { retStart, retMax, version } = options;
-        const qRetstart = retStart ? `&retstart=${retStart}` : '';
-        const qRetmax = retMax ? `&retmax=${retMax}` : '';
-        const qVersion = version ? `&version=${version}` : '';
-        return `${qRetstart}${qRetmax}${qVersion}`;
-    }
-    return '';
-};
-exports.default = eSummary;
+exports.default = eCitMatch;

@@ -16,15 +16,15 @@ const constants_1 = require("../constants");
 const http_1 = __importDefault(require("../http"));
 const eSearch = (retMode, apiKey) => {
     return {
-        search: (dbName, term, options) => __awaiter(void 0, void 0, void 0, function* () {
-            const datas = yield (0, http_1.default)(constants_1.entryPoints.esearch, `db=${dbName}&term=${term}&usehistory=y&retmode=${retMode}${apiKey}${optionalArgsBuilder(options)}`);
+        search: (db, term, options) => __awaiter(void 0, void 0, void 0, function* () {
+            const datas = yield (0, http_1.default)(constants_1.entryPoints.esearch, `db=${db}&term=${term}&retmode=${retMode}${apiKey}${optionalArgsBuilder(options)}`);
             return datas;
         }),
     };
 };
 const optionalArgsBuilder = (options) => {
     if (options) {
-        const { minDate, maxDate, retStart, retMax, retType, dateType, relDate } = options;
+        const { minDate, maxDate, retStart, retMax, retType, dateType, relDate, useHistory } = options;
         const qMinDate = minDate ? `&mindate=${minDate}` : '';
         const qMaxDate = maxDate ? `&maxdate=${maxDate}` : '';
         const qRetstart = retStart ? `&retstart=${retStart}` : '';
@@ -32,7 +32,8 @@ const optionalArgsBuilder = (options) => {
         const qRetType = retType ? `&rettype=${retType}` : '';
         const qDateType = dateType ? `&datetype=${dateType}` : '';
         const qRelDate = relDate ? `&reldate=${relDate}` : '';
-        return `${qMinDate}${qMaxDate}${qRetstart}${qRetmax}${qRetType}${qDateType}${qRelDate}`;
+        const qUseHistory = useHistory ? `&usehistory=y` : '';
+        return `${qMinDate}${qMaxDate}${qRetstart}${qRetmax}${qRetType}${qDateType}${qRelDate}${qUseHistory}`;
     }
     return '';
 };

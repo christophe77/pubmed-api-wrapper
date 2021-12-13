@@ -6,13 +6,13 @@ import { RetMode } from '../types/pubmedApi';
 const eSearch = (retMode: RetMode, apiKey: string) => {
   return {
     search: async (
-      dbName: string,
+      db: string,
       term: string,
       options: ESearchOptions,
     ): Promise<string> => {
       const datas = await getRequest(
         entryPoints.esearch,
-        `db=${dbName}&term=${term}&retmode=${retMode}${apiKey}${optionalArgsBuilder(
+        `db=${db}&term=${term}&retmode=${retMode}${apiKey}${optionalArgsBuilder(
           options,
         )}`,
       );

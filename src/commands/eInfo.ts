@@ -11,10 +11,10 @@ const eInfo = (retMode: RetMode, apiKey: string) => {
       );
       return datas;
     },
-    getDbInfo: async (dbName: string): Promise<string> => {
+    getDbInfo: async (db: string): Promise<string> => {
       const datas = await getRequest(
         entryPoints.einfo,
-        `db=${dbName}&retmode=${retMode}${apiKey}`,
+        `db=${db}&retmode=${retMode}${apiKey}`,
       );
       return datas;
     },

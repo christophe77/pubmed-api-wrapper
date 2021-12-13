@@ -129,3 +129,21 @@ Explanations here : https://dataguide.nlm.nih.gov/eutilities/utilities.html#esum
             console.log(error);
         }
     }
+
+### eCitMatch
+
+Explanations here : https://dataguide.nlm.nih.gov/eutilities/utilities.html#ecitmatch<br/>
+
+// bdata = journal_title|year|volume|first_page|author_name|your_key|
+
+    async function eCitMatch() {
+        try {
+            const results = await pubMedApi.eCitMatch.match(
+            'pubmed',
+            'proc+natl+acad+sci+u+s+a|1991|88|3248|mann+bj|Art1|%0Dscience|1987|235|182|palmenberg+ac|Art2|',
+            );
+            console.log(results);
+        } catch (error) {
+            console.log(error);
+        }
+    }
